@@ -78,7 +78,7 @@ public class Mensaje implements Serializable {
 
     @Override
     public String toString() {
-        return Mensaje;
+        return Receiver+"  "+Sender+"  "+Mensaje;
     }
 
 }

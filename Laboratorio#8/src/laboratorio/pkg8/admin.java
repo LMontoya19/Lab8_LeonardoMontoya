@@ -18,18 +18,18 @@ import java.util.ArrayList;
  * @author Inspiron
  */
 public class admin {
-    private ArrayList<empleado> listaempleado = new ArrayList();
+    private ArrayList<String> listaempleado = new ArrayList();
     private File Archvio = null;
 
     public admin(String path) {
         this.Archvio = new File(path);
     }
 
-    public ArrayList<empleado> getListaPersona() {
+    public ArrayList<String> getListaPersona() {
         return listaempleado;
     }
 
-    public void setListaPersona(ArrayList<empleado> listaPersona) {
+    public void setListaPersona(ArrayList<String> listaPersona) {
         this.listaempleado = listaPersona;
     }
 
@@ -41,7 +41,7 @@ public class admin {
         this.Archvio = Archvio;
     }
 
-    public void setPersona(empleado p) {
+    public void setPersona(String p) {
         this.listaempleado.add(p);
 
     }
@@ -54,12 +54,12 @@ public class admin {
     public void cargarArchivo() {
         try {
             listaempleado = new ArrayList<>();
-            empleado temp;
+            String temp;
             if (Archvio.exists()) {
                 FileInputStream entrada = new FileInputStream(Archvio);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (empleado) objeto.readObject()) != null) {
+                    while ((temp = (String) objeto.readObject()) != null) {
                         listaempleado.add(temp);
 
                     }
@@ -80,7 +80,7 @@ public class admin {
         try {
             fw = new FileOutputStream(Archvio);
             bw = new ObjectOutputStream(fw);
-            for (empleado persona : listaempleado) {
+            for (String persona : listaempleado) {
                 bw.writeObject(persona);
             }
             bw.flush();
